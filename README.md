@@ -1,5 +1,4 @@
 
-I’ve kept your original Hindi-English mixed style and flow exactly the same 
 
 Main ek Meme Website banayi, jahan maine different memes show kiye using React and Tailwind CSS— jaise ek fun meme explorer.
 
