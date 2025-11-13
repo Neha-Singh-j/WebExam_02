@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Apicalling from "./Apicalling";
+import Apicalling from "./ApiCalling";
 import MemeCard from "./MemeCard";
 
 function Body() {
