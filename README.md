@@ -1,50 +1,74 @@
 
-I created a restaurant website like Swiggy using React and Tailwind CSS.
+Main ek **restaurant website** banayi, thoda Swiggy jaisa, using **React** and **Tailwind CSS**.
 
-First, I made the React app using Vite and installed tailwindcss, axios, and react-router-dom.  
-Then I setup Tailwind and added it in index.css.  
+Sabse pehle maine React app create kiya using **Vite**, uske baad install kiye ye main packages —
+**tailwindcss**, **axios**, aur **react-router-dom**.
+Phir Tailwind setup karke usko `index.css` me import kiya, taaki saare components me styling easily apply ho jaye.
 
-After setup, I created components:
-- Navbar.jsx
-- Footer.jsx
-- RestaurantList.jsx
-- RestaurantCard.jsx
-- RestaurantDetails.jsx
-- Home.jsx
+Component strucutre->
 
-In Home.jsx, I called the restaurant API using axios inside useEffect.  
-I used useState to store data like:
+Maine project me ye components banaye:
 
+* **Navbar.jsx** → top navigation bar (logo, links, search bar)
+* **Footer.jsx** → bottom section, Flowbite ke footer component se thoda customize kiya
+* **Home.jsx** → main landing page jahan saare restaurants dikhte hain
+* **RestaurantList.jsx** → list of all restaurants mapped from API data
+* **RestaurantCard.jsx** → single restaurant ka card (image, name, rating, cuisine, etc.)
+* **RestaurantDetails.jsx** → jab user kisi restaurant pe click karta hai, to details aur menu yahan show hota hai
+
+---
+
+### ⚙️ **Functionality**
+
+In **Home.jsx**, maine **axios** se API call kiya inside `useEffect`, aur restaurants data ko state me store kiya:
+
+```js
 const [restaurants, setRestaurants] = useState([]);
+```
 
-Then I mapped this data in RestaurantList.jsx and sent each restaurant to RestaurantCard.jsx as props.
+Phir ye data maine **RestaurantList.jsx** me map karke, har restaurant ko prop ke form me **RestaurantCard.jsx** me bheja.
+Card component me Tailwind ke classes use karke proper UI design banaya — image upar, name aur rating niche, with hover effects and shadows.
 
-In RestaurantCard.jsx, I showed the restaurant image, name, rating, and cuisine using Tailwind classes for design.
-Each card was clickable — on click, it opened RestaurantDetails.jsx page with the selected restaurant id.
+Card clickable banaya, aur jab user click kare to `useNavigate()` se redirect hota hai `/restaurant/:id` route pe.
 
-In RestaurantDetails.jsx, I again called API using that id to fetch menu items.
-I stored items in:
+---
 
+### 🍔 **Restaurant Details Page**
 
+**RestaurantDetails.jsx** me maine again API call kiya using that restaurant id —
+uske menu items fetch kiye aur ek aur state me store kiya:
+
+```js
 const [menuItems, setMenuItems] = useState([]);
+```
 
+Phir har food item ka **name, price, aur description** Tailwind UI ke design ke sath show kiya —
+responsive layout ke sath grid aur flex use kiya, aur rounded corners + hover effects bhi add kiye.
 
-Then displayed all food items with price and description using Tailwind UI.
+---
 
-Navbar and Footer were common in all pages, added in App.jsx.
-Used react-router-dom for routes like:
+### 🧭 **Routing**
 
-* `/` → Home (shows all restaurants)
-* `/restaurant/:id` → shows restaurant menu and details
+React Router DOM se routes define kiye:
 
-Used Tailwind for full styling — grid for layout, flex for alignment, bg for colors, shadow for cards, hover for effects, rounded for corners, and responsive classes for small and large screens.
+* `/` → **Home.jsx** (sab restaurants show karta hai)
+* `/restaurant/:id` → **RestaurantDetails.jsx** (specific restaurant ke menu items dikhata hai)
 
-At last, I checked all pages, all data fetched properly from API, cards displayed fine, and the site looked responsive and clean using only React and Tailwind.
+**Navbar** aur **Footer** dono common the, isliye maine unhe `App.jsx` me import karke sab pages me lagaya.
 
-Deployment----
+---
 
-<!-- https://flowbite.com/docs/components/footer/ used footer component -->
-<!-- https://flowbite.com/docs/components/navbar/ -->
+### 🎨 **Design & Responsiveness**
 
+Tailwind ke utilities use kiye:
 
-NehaSingh_52_2
+* `grid`, `flex`, `gap`, `shadow`, `rounded`, `hover:scale-105` for cards
+* `bg-gray-100`, `text-gray-800`, `p-4`, `m-2` etc. for layout and colors
+* `sm:`, `md:`, `lg:` classes for responsive design
+
+Website fully responsive aur clean UI ke sath ban gaya, har screen size me properly adjust hota hai.
+
+---
+
+Pure React + Tailwind se ek functional, responsive **Swiggy-style restaurant site** ready ho gayi.
+Sab API data dynamic tha, UI fast and smooth tha, aur har page neatly connected with routes tha.
